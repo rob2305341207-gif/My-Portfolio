@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khaled Bin A. Rob</title>
+  <meta name="description" content="Results-driven Network Operations Professional with 3.5+ years of experience in NOC, cybersecurity, software testing, and mission-critical infrastructure." />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5e9',
+            primarydark: '#0284c7',
+            primarylight: '#38bdf8',
+            accent: '#06b6d4',
+            bgdark: '#0f172a',
+            bgcard: '#1e293b',
+            bgsubtle: '#334155',
+            textprimary: '#ffffff',
+            textsecondary: '#94a3b8',
+            textmuted: '#64748b'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(14,165,233,0.12), 0 10px 30px rgba(14,165,233,0.12)'
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-bgdark font-sans text-textsecondary antialiased overflow-x-hidden">
+  <div id="page" class="relative min-h-screen overflow-x-hidden">
+    <!-- Background Orbs -->
+    <div class="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl animate-pulse-slow"></div>
+    <div class="pointer-events-none absolute bottom-1/4 right-1/4 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-accent/10 blur-3xl animate-pulse-slow"></div>
+
+    <canvas id="network-canvas" class="pointer-events-none absolute inset-0 z-0 opacity-30"></canvas>
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed left-0 top-0 z-50 w-full border-b border-white/5 bg-bgdark/75 backdrop-blur-xl transition-all duration-300">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#hero" class="nav-brand group font-mono text-base font-semibold tracking-tight text-white focus-visible" aria-label="Go to top">
+          <span class="text-primary">&lt;</span>Khaled<span class="text-primary">/&gt;</span>
+        </a>
+
+        <nav class="hidden items-center gap-7 md:flex" aria-label="Main navigation">
+          <a class="nav-link font-mono text-sm text-textsecondary" href="#about"><span class="text-primary">01.</span> About</a>
+          <a class="nav-link font-mono text-sm text-textsecondary" href="#experience"><span class="text-primary">02.</span> Experience</a>
+          <a class="nav-link font-mono text-sm text-textsecondary" href="#projects"><span class="text-primary">03.</span> Projects</a>
+          <a class="nav-link font-mono text-sm text-textsecondary" href="#skills"><span class="text-primary">04.</span> Skills</a>
+          <a class="btn-outline glow-primary rounded-xl border border-primary/60 px-4 py-2 font-mono text-sm text-primary transition-all" href="#contact">Contact</a>
+        </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden focus-visible rounded-lg border border-white/10 p-2 text-textsecondary hover:border-primary/60 hover:text-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="mobile-menu hidden border-t border-white/5 bg-bgdark/95 px-4 py-4 md:hidden" aria-label="Mobile navigation">
+        <a href="#about" class="mobile-link block rounded-lg px-3 py-3 text-white hover:bg-white/5"><span class="text-primary font-mono">01.</span> About</a>
+        <a href="#experience" class="mobile-link block rounded-lg px-3 py-3 text-white hover:bg-white/5"><span class="text-primary font-mono">02.</span> Experience</a>
+        <a href="#projects" class="mobile-link block rounded-lg px-3 py-3 text-white hover:bg-white/5"><span class="text-primary font-mono">03.</span> Projects</a>
+        <a href="#skills" class="mobile-link block rounded-lg px-3 py-3 text-white hover:bg-white/5"><span class="text-primary font-mono">04.</span> Skills</a>
+        <a href="#contact" class="mobile-link mt-2 block rounded-lg border border-primary/60 px-3 py-3 text-primary hover:bg-primary/10">Contact</a>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <!-- Hero -->
+      <section id="hero" class="mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-16 pt-28 sm:px-6 lg:px-8">
+        <div class="grid w-full items-center gap-12 lg:grid-cols-2">
+          <div class="space-y-6">
+            <p class="animate-fade-in-up font-mono text-sm tracking-[0.28em] text-primary" style="animation-delay: 0.1s;">Hi, my name is</p>
+            <h1 class="animate-fade-in-up max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl" style="animation-delay: 0.2s;">
+              Khaled Bin A. Rob
+            </h1>
+
+            <div class="animate-fade-in-up text-2xl font-semibold leading-snug text-white sm:text-3xl lg:text-4xl" style="animation-delay: 0.3s;">
+              I build <span id="typewriter" class="text-primary"></span>
+            </div>
+
+            <p class="animate-fade-in-up max-w-2xl text-base leading-8 text-textsecondary sm:text-lg" style="animation-delay: 0.4s;">
+              Results-driven Network Operations Professional with 3.5+ years of experience across NOC operations, cybersecurity, and software testing. I bring a methodical approach to problem-solving, enterprise-grade infrastructure focus, and a strong commitment to reliability, resilience, and performance.
+            </p>
+
+            <div class="animate-fade-in-up flex flex-wrap gap-3" style="animation-delay: 0.5s;">
+              <a href="#projects" class="btn-primary focus-visible rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all">
+                View My Work
+              </a>
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="btn-secondary focus-visible rounded-xl border border-primary/60 px-5 py-3 text-sm font-semibold text-primary transition-all">
+                GitHub
+              </a>
+            </div>
+
+            <div class="animate-fade-in-up flex flex-wrap gap-3 pt-2 text-xs font-medium text-textmuted sm:text-sm" style="animation-delay: 0.6s;">
+              <span class="stat-pill">3.5+ Years</span>
+              <span class="stat-pill">200+ Clients</span>
+              <span class="stat-pill">99.5% Uptime</span>
+            </div>
+          </div>
+
+          <div class="animate-fade-in-up relative" style="animation-delay: 0.6s;">
+            <div class="terminal-wrap relative mx-auto max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-bgcard/90 shadow-2xl shadow-black/30 transition-transform duration-300 hover:scale-[1.02]">
+              <div class="flex items-center gap-2 border-b border-white/5 px-4 py-3">
+                <span class="h-3 w-3 rounded-full bg-red-500"></span>
+                <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+                <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                <div class="ml-2 font-mono text-xs text-textmuted">khaled@network:~</div>
+              </div>
+
+              <div class="relative p-5 sm:p-6">
+                <div class="terminal-lines space-y-2 font-mono text-sm sm:text-[0.95rem]">
+                  <div class="terminal-line"><span class="text-primary">$</span> whoami</div>
+                  <div class="terminal-line text-white">Khaled Bin A. Rob</div>
+
+                  <div class="terminal-line"><span class="text-primary">$</span> experience --summary</div>
+                  <div class="terminal-line text-white">3.5+ years in NOC, cybersecurity, and testing</div>
+
+                  <div class="terminal-line"><span class="text-primary">$</span> uptime</div>
+                  <div class="terminal-line text-white">99.5% service reliability focus</div>
+
+                  <div class="terminal-line"><span class="text-primary">$</span> focus</div>
+                  <div class="terminal-line text-white">secure networks • resilient systems • scalable delivery</div>
+
+                  <div class="terminal-line cursor-line text-primary">▌</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pointer-events-none absolute -left-5 top-1/4 h-28 w-28 rounded-full border border-primary/20 animate-spin-slow"></div>
+            <div class="pointer-events-none absolute -right-6 bottom-8 h-32 w-32 rounded-full border border-accent/10 animate-spin-reverse"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="reveal mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="section-title mb-10 flex items-center gap-4">
+          <span class="font-mono text-lg text-primary">01.</span>
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">About Me</h2>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/70 to-transparent"></div>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-5">
+          <div class="lg:col-span-3 space-y-5">
+            <p class="reveal text-lg leading-8 text-textsecondary">
+              I am a <span class="text-white">Results-driven Network Operations Professional</span> with practical experience supporting enterprise-grade infrastructure, mission-critical network systems, and security-conscious environments. My tenure at <span class="text-white">Explore Online ISP</span> and <span class="text-white">BornoSoft</span> strengthened my ability to troubleshoot quickly, communicate clearly, and execute with discipline.
+            </p>
+            <p class="reveal text-lg leading-8 text-textsecondary">
+              I work with a <span class="text-white">methodical approach to problem-solving</span>, combining systematic debugging methodologies with a holistic understanding of technology ecosystems. My focus is on building dependable systems, improving operational stability, and helping teams deliver consistently.
+            </p>
+
+            <div class="grid gap-3 pt-3 sm:grid-cols-2">
+              <div class="skill-tag reveal">NOC Operations</div>
+              <div class="skill-tag reveal">Cybersecurity</div>
+              <div class="skill-tag reveal">Software Testing</div>
+              <div class="skill-tag reveal">Network Troubleshooting</div>
+              <div class="skill-tag reveal">Linux Administration</div>
+              <div class="skill-tag reveal">System Hardening</div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2">
+            <div class="profile-image-container reveal relative overflow-hidden rounded-3xl border border-primary/20 bg-bgcard p-2 shadow-xl shadow-black/20">
+              <img src="profile.jpg" alt="Portrait of Khaled Bin A. Rob" class="h-[420px] w-full rounded-2xl object-cover" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="reveal mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="section-title mb-12 flex items-center gap-4">
+          <span class="font-mono text-lg text-primary">02.</span>
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">Professional Experience</h2>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/70 to-transparent"></div>
+        </div>
+
+        <div class="relative">
+          <div class="timeline-line absolute left-4 top-0 hidden h-full w-px bg-gradient-to-b from-primary via-primary/50 to-transparent md:left-1/2 md:block"></div>
+
+          <div class="space-y-10">
+            <article class="timeline-card reveal relative rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20 md:w-[48%]">
+              <span class="timeline-dot"></span>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold text-white">Software Tester</h3>
+                <span class="font-mono text-xs text-primary">BornoSoft</span>
+              </div>
+              <p class="mt-2 font-mono text-xs text-textmuted">Feb 2026 — Present · Savar, Dhaka</p>
+
+              <ul class="mt-5 space-y-3 text-textsecondary">
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Implemented structured regression testing workflows to improve release confidence and product stability.</span></li>
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Applied systematic debugging methodologies to isolate defects and support faster root-cause analysis.</span></li>
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Collaborated with developers and stakeholders to refine test cases, validate fixes, and strengthen QA coverage.</span></li>
+              </ul>
+            </article>
+
+            <article class="timeline-card reveal relative rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20 md:ml-auto md:w-[48%]">
+              <span class="timeline-dot"></span>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-xl font-semibold text-white">Network Operator</h3>
+                <span class="font-mono text-xs text-primary">Explore Online ISP</span>
+              </div>
+              <p class="mt-2 font-mono text-xs text-textmuted">Dec 2019 — Jun 2023 · Dhaka</p>
+
+              <ul class="mt-5 space-y-3 text-textsecondary">
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Maintained client-facing network services and helped support 200+ customers with a reliability-first mindset.</span></li>
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Monitored infrastructure health, responded to incidents, and coordinated mitigation steps to preserve uptime.</span></li>
+                <li class="flex gap-3"><span class="mt-1 text-primary">➜</span><span>Strengthened operational efficiency through disciplined routing, diagnostics, and escalation workflows.</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="reveal mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="section-title mb-12 flex items-center gap-4">
+          <span class="font-mono text-lg text-primary">03.</span>
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">Featured Projects</h2>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/70 to-transparent"></div>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <article class="project-card reveal group rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <div class="mb-4 flex items-start gap-4">
+              <div class="project-icon">O</div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white">Onudaan</h3>
+                <p class="mt-1 text-sm text-textmuted">Payment workflow platform</p>
+              </div>
+            </div>
+            <p class="leading-7 text-textsecondary">Designed secure invoicing, merchant workflows, and API orchestration to support reliable business operations.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">API</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="btn-project focus-visible">GitHub</a>
+              <a href="#" class="btn-project-alt focus-visible" aria-label="Live project link placeholder">Live</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal group rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <div class="mb-4 flex items-start gap-4">
+              <div class="project-icon">B</div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white">Barter</h3>
+                <p class="mt-1 text-sm text-textmuted">Local trading marketplace</p>
+              </div>
+            </div>
+            <p class="leading-7 text-textsecondary">Built secure authentication flows and a responsive marketplace experience using a modern MERN-style architecture.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Express</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Socket.IO</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="btn-project focus-visible">GitHub</a>
+              <a href="#" class="btn-project-alt focus-visible" aria-label="Live project link placeholder">Live</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal group rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <div class="mb-4 flex items-start gap-4">
+              <div class="project-icon">S</div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white">Shopper</h3>
+                <p class="mt-1 text-sm text-textmuted">E-commerce inventory system</p>
+              </div>
+            </div>
+            <p class="leading-7 text-textsecondary">Implemented infrastructure-aware deployment and monitoring patterns to support scalability and high availability.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">Monitoring</span>
+              <span class="skill-tag">Stripe</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="btn-project focus-visible">GitHub</a>
+              <a href="#" class="btn-project-alt focus-visible" aria-label="Live project link placeholder">Live</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal group rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <div class="mb-4 flex items-start gap-4">
+              <div class="project-icon">M</div>
+              <div>
+                <h3 class="text-2xl font-semibold text-white">Medico</h3>
+                <p class="mt-1 text-sm text-textmuted">Telehealth appointment engine</p>
+              </div>
+            </div>
+            <p class="leading-7 text-textsecondary">Created secure patient workflows and analytics-ready interfaces to support dependable digital healthcare experiences.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Django</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Auth</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="btn-project focus-visible">GitHub</a>
+              <a href="#" class="btn-project-alt focus-visible" aria-label="Live project link placeholder">Live</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="reveal mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="section-title mb-12 flex items-center gap-4">
+          <span class="font-mono text-lg text-primary">04.</span>
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">Technical Proficiency</h2>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/70 to-transparent"></div>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <h3 class="text-xl font-semibold text-white">Network Infrastructure</h3>
+            <div class="mt-6 space-y-6">
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">Cisco Routing</span>
+                  <span class="font-mono text-textmuted">95%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="95%"></div>
+                </div>
+              </div>
+
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">MikroTik / Winbox</span>
+                  <span class="font-mono text-textmuted">90%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="90%"></div>
+                </div>
+              </div>
+
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">Network Monitoring</span>
+                  <span class="font-mono text-textmuted">92%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <h3 class="text-xl font-semibold text-white">Cybersecurity</h3>
+            <div class="mt-6 space-y-6">
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">Penetration Testing</span>
+                  <span class="font-mono text-textmuted">88%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="88%"></div>
+                </div>
+              </div>
+
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">Threat Detection</span>
+                  <span class="font-mono text-textmuted">85%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="85%"></div>
+                </div>
+              </div>
+
+              <div class="skill-block">
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="text-textsecondary">System Hardening</span>
+                  <span class="font-mono text-textmuted">80%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="progress-bar" data-width="80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <h4 class="text-lg font-semibold text-white">Programming Languages</h4>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">Bash</span>
+            </div>
+          </div>
+
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-6 shadow-xl shadow-black/20">
+            <h4 class="text-lg font-semibold text-white">Systems & Platforms</h4>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Cisco</span>
+              <span class="skill-tag">MikroTik</span>
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">Windows Server</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3 text-sm text-textmuted">
+          <span class="stat-pill">5 Languages</span>
+          <span class="stat-pill">3.5+ Years</span>
+          <span class="stat-pill">200+ Clients</span>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="reveal mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div class="section-title mb-12 flex items-center gap-4">
+          <span class="font-mono text-lg text-primary">05.</span>
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">What's Next?</h2>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/70 to-transparent"></div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-8 shadow-xl shadow-black/20">
+            <h3 class="text-2xl font-semibold text-white">Get In Touch</h3>
+            <p class="mt-4 max-w-xl leading-8 text-textsecondary">
+              I am open to full-time opportunities, contract projects, and technical collaborations where reliability, structured execution, and infrastructure quality matter most.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <a href="mailto:khaledbinarob@gmail.com" class="contact-link focus-visible flex items-center gap-3 text-primary">
+                <span class="contact-icon">✉</span>
+                <span>khaledbinarob@gmail.com</span>
+              </a>
+              <a href="tel:+880123456789" class="contact-link focus-visible flex items-center gap-3 text-primary">
+                <span class="contact-icon">☎</span>
+                <span>+880 1234 567890</span>
+              </a>
+              <div class="flex items-center gap-3 text-textmuted">
+                <span class="contact-icon">⌂</span>
+                <span>Ashulia, Savar, Dhaka, Bangladesh</span>
+              </div>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="https://github.com/rob2305341207" target="_blank" rel="noreferrer" class="social-btn focus-visible" aria-label="GitHub profile">GitHub</a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" class="social-btn focus-visible" aria-label="LinkedIn profile">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="reveal rounded-3xl border border-white/8 bg-bgcard p-8 shadow-xl shadow-black/20">
+            <h3 class="text-2xl font-semibold text-white">Let's build something reliable.</h3>
+            <p class="mt-4 leading-8 text-textsecondary">
+              If your team needs a professional with a strong operational mindset, security awareness, and a disciplined approach to solving technical problems, I would be glad to connect.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+             <a href="mailto:khaledbinarob@gmail.com?subject=Let's%20connect&body=Hello%20Khaled,%20I%20want%20to%20discuss..." class="btn-primary focus-visible rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all">
+                Email Me
+            </a>
+              <a href="tel:+880123456789" class="btn-secondary focus-visible rounded-xl border border-primary/60 px-5 py-3 text-sm font-semibold text-primary transition-all">
+                Call
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/8 py-8 text-center text-sm text-textmuted">
+      <p>Designed &amp; Built by Khaled Bin A. Rob</p>
+      <p class="mt-1">© 2026 All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
